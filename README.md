@@ -82,7 +82,7 @@ npm start
 
 - **Frontend**: React, TypeScript, Tailwind CSS
 - **Backend**: Express
-- **Deployment**: *(Add your deployment details if applicable)*
+- **Deployment**: AWS
 
 ---
 
