@@ -18,6 +18,8 @@ const CodeInput: React.FC = () => {
   const [loadingMessage, setLoadingMessage] = useState('');
 
   const handleSubmit = async () => {
+    if (loading) return; // Prevent multiple clicks
+
     setLoading(true);
     setError('');
     setActiveShift(null);
@@ -44,7 +46,11 @@ const CodeInput: React.FC = () => {
       }));
       setResults(mappedResults);
     } catch (err) {
-      setError('Failed to process the text. Please try again.');
+      if (err.response?.status === 429) {
+        setError('Too many requests. Please try again in one minute.');
+      } else {
+        setError('Failed to process the text. Please try again.');
+      }
     } finally {
       setLoading(false);
       setLoadingMessage('');
