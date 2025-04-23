@@ -58,7 +58,7 @@ app.post('/shift-text', limiter, async (req, res) => {
             messages: [
                 {
                     role: "system",
-                    content: "Answer with yes or no. Are these four words likely English words?"
+                    content: "Answer with yes or no. Are most of each of these four words likely English word?"
                 },
                 {
                     role: "user",

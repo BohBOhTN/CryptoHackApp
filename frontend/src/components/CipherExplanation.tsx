@@ -1,6 +1,14 @@
 import React from 'react';
 import { BookOpen, History } from 'lucide-react';
 import Button from './ui/Button';
+import ReactGA from 'react-ga4';
+
+const handleLearnMoreClick = () => {
+  ReactGA.event({
+    category: 'User',
+    action: 'Clicked Learn More on Wikipedia'
+  });
+};
 
 const CipherExplanation: React.FC = () => {
   return (
@@ -60,7 +68,7 @@ const CipherExplanation: React.FC = () => {
           </div>
           
           <div className="flex justify-center mt-6">
-            <Button href="https://en.wikipedia.org/wiki/Caesar_cipher">
+            <Button href="https://en.wikipedia.org/wiki/Caesar_cipher" onClick={handleLearnMoreClick}>
               <BookOpen className="w-5 h-5 mr-2" />
               Learn more on Wikipedia
             </Button>

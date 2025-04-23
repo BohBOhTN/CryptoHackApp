@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'; 
 import { Code, CheckCircle, Loader2, XCircle } from 'lucide-react'; 
 import Button from './ui/Button';
+import ReactGA from 'react-ga4';
 
 interface ShiftResult {
   shift: number;
@@ -16,6 +17,13 @@ const CodeInput: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [loadingMessage, setLoadingMessage] = useState('');
+
+  const handleDecryptClick = () => {
+    ReactGA.event({
+      category: 'User',
+      action: 'Clicked Decrypt Text'
+    });
+  };
 
   const handleSubmit = async () => {
     if (loading) return; // Prevent multiple clicks
@@ -83,7 +91,10 @@ const CodeInput: React.FC = () => {
         
         <div className="flex justify-end mb-6">
           <Button 
-            onClick={handleSubmit} 
+            onClick={() => {
+              handleDecryptClick();
+              handleSubmit();
+            }} 
             primary={true} 
             className="relative"
             disabled={!input.trim() || loading}

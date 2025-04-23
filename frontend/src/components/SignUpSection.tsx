@@ -1,6 +1,14 @@
 import React from 'react';
 import { ExternalLink, UserPlus } from 'lucide-react';
 import Button from './ui/Button';
+import ReactGA from 'react-ga4';
+
+const handleRegisterClick = () => {
+  ReactGA.event({
+    category: 'User',
+    action: 'Clicked Register on CryptoHack'
+  });
+};
 
 const SignUpSection: React.FC = () => {
   return (
@@ -20,7 +28,7 @@ const SignUpSection: React.FC = () => {
             During registration, you'll encounter your first challenge: <span className="font-semibold text-teal-300">"Solve this Roman emperor's cipher"</span> where you'll need to enter a four-word solution.
           </p>
           
-          <Button href="https://cryptohack.org/register/" primary={true}>
+          <Button href="https://cryptohack.org/register/" primary={true} onClick={handleRegisterClick}>
             <UserPlus className="w-5 h-5 mr-2" />
             Register on CryptoHack
             <ExternalLink className="w-4 h-4 ml-2" />

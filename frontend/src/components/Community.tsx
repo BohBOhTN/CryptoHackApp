@@ -1,6 +1,14 @@
 import React from 'react';
 import { Github, Star } from 'lucide-react';
 import Button from './ui/Button';
+import ReactGA from 'react-ga4';
+
+const handleContributeClick = () => {
+  ReactGA.event({
+    category: 'User',
+    action: 'Clicked Contribute on GitHub'
+  });
+};
 
 const Community: React.FC = () => {
   return (
@@ -26,7 +34,7 @@ const Community: React.FC = () => {
               Whether it's improving the UI, adding new features, or fixing bugs, your contributions are valuable to making this tool more useful for everyone.
             </p>
             
-            <Button href="https://github.com/BohBOhTN/CryptoHackApp" primary={true}>
+            <Button href="https://github.com/BohBOhTN/CryptoHackApp" primary={true} onClick={handleContributeClick}>
               <Github className="w-5 h-5 mr-2" />
               Contribute on GitHub
             </Button>
